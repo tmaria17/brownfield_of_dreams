@@ -1,7 +1,7 @@
 class GithubService
 
   def get_repos
-    get_json("/user/repos")
+    get_json("/user/repos?per_page=5")
   end
 
 private
