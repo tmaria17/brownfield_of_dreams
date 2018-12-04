@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def show
+    @repo_facade = RepoFacade.new
   end
 
   def new
