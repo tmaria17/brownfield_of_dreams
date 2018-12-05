@@ -23,7 +23,6 @@ describe 'A registered user' do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit '/dashboard'
-
     expect(page).to_not have_content("Github")
   end
 
@@ -34,6 +33,7 @@ describe 'A registered user' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
     VCR.use_cassette("github_token") do
       visit '/dashboard'
+
 
       expect(page).to have_content("battleshift")
       expect(page).to_not have_content("bradley_cooper")
