@@ -17,6 +17,7 @@ class UserDashboardFacade
                   Repo.new(repo_data)
                 end
   end
+
   def github_service
     GithubService.new(token)
   end
