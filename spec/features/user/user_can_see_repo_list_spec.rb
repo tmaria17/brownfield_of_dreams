@@ -30,7 +30,7 @@ describe 'A registered user' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
     visit '/dashboard'
-    save_and_open_page
+    
     expect(page).to have_content("battleshift")
     expect(page).to_not have_content("bradley_cooper")
 
