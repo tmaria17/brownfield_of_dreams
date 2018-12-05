@@ -6,7 +6,7 @@ describe 'A registered user' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit '/dashboard'
 
-    save_and_open_page
+    # save_and_open_page
 
     expect(page).to have_content("Github")
     expect(page).to have_css(".repo", count: 5)
@@ -16,12 +16,12 @@ describe 'A registered user' do
     end
   end
 
-  xit 'does not see a github section if they dont have a token' do
+  it 'does not see a github section if they dont have a token' do
     user = create(:user)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit '/dashboard'
 
-
+    expect(page).to_not have_content("Github")
   end
 end
