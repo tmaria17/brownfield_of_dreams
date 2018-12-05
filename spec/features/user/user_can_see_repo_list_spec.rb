@@ -22,4 +22,17 @@ describe 'A registered user' do
 
     expect(page).to_not have_content("Github")
   end
+
+  it "displays the correct repos when there is more than one user" do
+    user_1 = create(:user, token: ENV['github_token'])
+    user_2 = create(:user, token: ENV['github_token_2'])
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+
+    visit '/dashboard'
+    save_and_open_page
+    expect(page).to have_content("battleshift")
+    expect(page).to_not have_content("bradley_cooper")
+
+  end
 end
