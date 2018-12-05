@@ -2,7 +2,6 @@ class GithubService
 
   def initialize(token)
     @token = token
-    binding.pry
   end
 
   def get_repos
@@ -15,7 +14,7 @@ class GithubService
     url = "https://api.github.com"
     Faraday.new(url: url) do |faraday|
         faraday.adapter Faraday.default_adapter
-        faraday.headers["Authorization"] = "token #{@token}"
+        faraday.headers["Authorization"] = @token
     end
   end
 
