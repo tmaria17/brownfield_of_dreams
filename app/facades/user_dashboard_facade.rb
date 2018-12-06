@@ -18,6 +18,18 @@ class UserDashboardFacade
                 end
   end
 
+  def followers
+    @followers ||= github_service.get_followers.map do |follower_data|
+                    Follower.new(follower_data)
+                  end
+  end
+
+  def following
+    @following ||= github_service.get_following.map do |following_data|
+                    Follower.new(following_data)
+                  end
+  end
+
   def github_service
     GithubService.new(token)
   end

@@ -17,6 +17,7 @@ VCR.configure do |config|
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
   config.filter_sensitive_data("<github_token>") { ENV['github_token'] }
   config.filter_sensitive_data("<github_token_2>") { ENV['github_token_2'] }
+  config.filter_sensitive_data("<github_followers>") { ENV['github_followers'] }
 end
 
 

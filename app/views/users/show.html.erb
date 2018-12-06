@@ -10,13 +10,18 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+  <%= link_to "Send an Invite", invite_path %>
   <section>
     <% unless current_user.token == nil %>
     <h1>Github</h1>
     <% @user_facade.repos.each do |repo| %>
-  <ul class="repo">
-    <li class="name"><%= link_to repo.name, repo.url %></li>
-  </ul>
+        <ul class="repo">
+          <li class="name"><%= link_to repo.name, repo.url %></li>
+        </ul>
+    <% end %>
+    <h1>Followers</h1>
+    <% @user_facade.followers.each do |follower| %>
+      <li><%= link_to follower.handle, follower.url %></li>
     <% end %>
   <% end %>
   </section>

@@ -8,14 +8,25 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
-    if user.save
-      session[:user_id] = user.id
+    if params[:github_handle]
+      binding.pry
+      FriendNotifierMailer.inform(current_user, params[:email]).deliver_now
+      flash[:notice] = "Successfully sent invite!"
       redirect_to dashboard_path
     else
-      flash[:error] = 'Username already exists'
-      render :new
+      user = User.create(user_params)
+      if user.save
+        session[:user_id] = user.id
+        redirect_to dashboard_path
+      else
+        flash[:error] = 'Username already exists'
+        render :new
+      end
     end
+
+  end
+
+  def update
   end
 
   private

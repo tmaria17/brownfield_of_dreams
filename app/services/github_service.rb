@@ -8,6 +8,14 @@ class GithubService
     get_json("/user/repos?per_page=5")
   end
 
+  def get_followers
+    get_json("/user/followers")
+  end
+
+  def get_following
+    get_json("/user/following")
+  end
+
   private
 
   def conn

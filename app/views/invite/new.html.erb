@@ -1,0 +1,10 @@
+
+<h1> Invite a Github User </h1>
+<br>
+<%= form_for @user do |f| %>
+
+<%= f.label :github_handle %>
+<%= f.text_field :github_handle, value: "Github Handle" %>
+<br>
+<%= f.submit "Send Invite" %>
+<% end %>
