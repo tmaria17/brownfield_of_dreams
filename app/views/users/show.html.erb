@@ -18,6 +18,12 @@
     <li class="name"><%= link_to repo.name, repo.url %></li>
   </ul>
     <% end %>
+    <h2>Followers</h2>
+      <% @user_facade.followers.each do |follower| %>
+      <ul class="follower">
+        <li class="name"> <%= link_to follower.name, follower.url %></li>
+      </ul>
+      <% end %>
   <% end %>
   </section>
 </section>
