@@ -26,7 +26,7 @@ class UserDashboardFacade
 
   def following
     @following ||= github_service.get_followed_users.map do |following_data|
-                  FollowedUser.new(following_data)
+                  Follower.new(following_data)
                 end
     end
 
