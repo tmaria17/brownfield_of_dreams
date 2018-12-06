@@ -21,7 +21,7 @@ describe 'A registered user' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit '/dashboard'
-
+    save_and_open_page
     expect(page).to have_content("Github")
     expect(page).to have_content("Following")
     expect(page).to have_css(".followed_user")
@@ -30,6 +30,4 @@ describe 'A registered user' do
     end
   end
 
-
-  end
 end

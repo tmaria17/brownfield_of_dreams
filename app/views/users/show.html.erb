@@ -24,6 +24,12 @@
         <li class="name"> <%= link_to follower.name, follower.url %></li>
       </ul>
       <% end %>
+      <h2>Following</h2>
+      <% @user_facade.following.each do |followed| %>
+      <ul class="followed_user">
+        <li class="name"> <%= link_to followed.name, followed.url %></li>
+      </ul>
+      <% end %>
   <% end %>
   </section>
 </section>
