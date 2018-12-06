@@ -25,7 +25,6 @@ describe 'A registered user' do
     VCR.use_cassette("github_following") do
 
       visit '/dashboard'
-      save_and_open_page
       expect(page).to have_content("Github")
       expect(page).to have_content("Following")
       expect(page).to have_css(".followed_user")
