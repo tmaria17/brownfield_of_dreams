@@ -11,6 +11,8 @@
     <h1>Bookmarked Segments</h1>
   </section>
   <section>
+    <%= link_to 'Connect to Github', "https://github.com/login/oauth/authorize?client_id=#{ENV['GITHUB_CLIENT_ID']}" %>
+
     <% unless current_user.token == nil %>
     <h1>Github</h1>
     <% @user_facade.repos.each do |repo| %>
