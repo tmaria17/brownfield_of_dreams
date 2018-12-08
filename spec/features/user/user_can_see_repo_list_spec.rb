@@ -9,7 +9,7 @@ describe 'A registered user' do
     VCR.use_cassette("github_token") do
       visit '/dashboard'
 
-      expect(page).to have_content("Github")
+      expect(page).to_not have_content("Connect to Github")
       expect(page).to have_css(".repo", count: 5)
 
       within(first(".repo")) do
@@ -23,7 +23,7 @@ describe 'A registered user' do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit '/dashboard'
-    expect(page).to_not have_content("Github")
+    expect(page).to have_content("Connect to Github")
   end
 
   it "displays the correct repos when there is more than one user" do
