@@ -18,13 +18,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    current_user.find_or_create_from_auth_hash(current_user, auth_hash)
+    redirect_to dashboard_path
+  end
+
   def destroy
-  end 
+  end
 
   private
 
+  def auth_hash
+    request.env["omniauth.auth"]
+  end
+
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :password)
+    params.require(:user).permit(:email, :first_name, :last_name, :password, :token)
   end
 
 end
