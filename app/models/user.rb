@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_secure_password
 
   def find_or_create_from_auth_hash(user, auth)
-    user[:token] = "token #{auth["credentials"]["token"]}"
-    user.save!
+    user[:token] = "#{auth["credentials"]["token"]}"
+    user.save
   end
 end
