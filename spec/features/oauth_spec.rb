@@ -18,7 +18,7 @@ require 'rails_helper'
       visit '/dashboard'
       click_link "Connect to Github"
 
-      # expect(user.token).to eq('00007')
+      expect(user.token).to eq(ENV['github_token'])
       expect(page).to have_content("Following")
       expect(page).to have_content("Followers")
       expect(page).to_not have_content("Connect to Github")
