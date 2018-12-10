@@ -29,13 +29,19 @@ describe 'as a user' do
       click_on "Add Friend"
     end
 
-    save_and_open_page
 
     within('.friends') do
       expect(page).to have_content(user_2.first_name)
       expect(page).to have_content(user_2.last_name)
       expect(page).to_not have_content(user_3.first_name)
     end
+
+    within('.followers') do
+      expect(page).to_not have_content("Add Friend")
+    end
+    
     expect(page).to have_content("You have added #{user_2.first_name} #{user_2.last_name} as a friend.")
   end
+
+
 end
