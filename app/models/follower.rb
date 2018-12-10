@@ -1,10 +1,12 @@
 class Follower
   attr_reader :name,
-              :url
+              :url,
+              :github_id
 
   def initialize(data)
     @name = data[:login]
     @url = data[:html_url]
+    @gitub_id = data[:id]
   end
 
   def conn
