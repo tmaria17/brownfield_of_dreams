@@ -12,6 +12,12 @@ class UserDashboardFacade
     @user.name
   end
 
+  def friends
+    @user.friendships.map do |friend|
+        User.find_by(github_id: friend.friend_id)
+    end
+  end
+
   def followers
     @followers ||= github_service.get_followers.map do |follower_data|
                   Follower.new(follower_data)
