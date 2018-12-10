@@ -35,6 +35,9 @@ Rails.application.routes.draw do
   get '/auth/github', as: 'github_auth'
   get '/auth/:provider/callback', to: 'users#update'
 
+  post '/friendship',  to: 'friendships#create'
+  get '/friendship',  to: 'friendships#create'
+
 
   # Is this being used?
   get '/video', to: 'video#show'
