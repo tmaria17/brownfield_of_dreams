@@ -14,6 +14,7 @@
     <%= link_to "Connect to Github", :github_auth %>
   <% end %>
   <section>
+    <%binding.pry%>
     <% unless current_user.token == nil %>
     <h1>Github</h1>
     <% @user_facade.repos.each do |repo| %>
@@ -24,7 +25,8 @@
     <h2>Followers</h2>
       <% @user_facade.followers.each do |follower| %>
       <ul class="follower">
-        <li class="name"> <%= link_to follower.name, follower.url %></li>
+        <li class="name"> <%= link_to follower.name, follower.url %>
+        </li>
       </ul>
       <% end %>
       <h2>Following</h2>
