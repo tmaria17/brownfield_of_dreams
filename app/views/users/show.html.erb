@@ -35,6 +35,9 @@
       <% @user_facade.following.each do |followed| %>
       <ul class="followed_user">
         <li class="name"> <%= link_to followed.name, followed.url %></li>
+        <% if User.where(github_id: followed.github_id).count >= 1 %>
+          <%= link_to "Add Friend", friendship_path(friend_id: followed.github_id) %>
+        <% end %>
       </ul>
       <% end %>
 
