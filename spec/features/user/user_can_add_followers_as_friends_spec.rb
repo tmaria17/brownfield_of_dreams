@@ -25,10 +25,12 @@ describe 'as a user' do
     visit dashboard_path
 
     click_on "Add Friend"
+    save_and_open_page
 
     within('.friends') do
-      expect(page).to have_content(user_2.name)
-      expect(page).to_not have_content(user_3.name)
+      expect(page).to have_content(user_2.first_name)
+      expect(page).to_not have_content(user_3.first_name)
     end
+
   end
 end
