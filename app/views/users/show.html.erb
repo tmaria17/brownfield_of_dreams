@@ -26,7 +26,7 @@
       <ul class="follower">
         <li class="name"> <%= link_to follower.name, follower.url %>
           <% if User.where(github_id: follower.github_id).count >= 1 %>
-            <%= link_to "Add Friend", friendship_path %>
+            <%= link_to "Add Friend", friendship_path(friend_id: follower.github_id) %>
           <% end %>
         </li>
       </ul>
@@ -36,6 +36,15 @@
       <ul class="followed_user">
         <li class="name"> <%= link_to followed.name, followed.url %></li>
       </ul>
+      <% end %>
+
+      <% if @user_facade.friends != [] %>
+        <h2>Friends</h2>
+        <ul class="friends">
+        <% @user_facade.friends.each do |friend| %>
+        <%= "#{friend.first_name} #{friend.last_name}"%>
+        <% end %>
+        </ul>
       <% end %>
   <% end %>
   </section>
