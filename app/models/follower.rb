@@ -6,7 +6,7 @@ class Follower
   def initialize(data)
     @name = data[:login]
     @url = data[:html_url]
-    @gitub_id = data[:id]
+    @github_id = data[:id]
   end
 
   def conn
