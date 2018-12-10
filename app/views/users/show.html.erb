@@ -21,6 +21,7 @@
     <li class="name"><%= link_to repo.name, repo.url %></li>
   </ul>
     <% end %>
+    <ul class="followers">
     <h2>Followers</h2>
       <% @user_facade.followers.each do |follower| %>
       <ul class="follower">
@@ -31,6 +32,8 @@
         </li>
       </ul>
       <% end %>
+    </ul>
+      <ul class="following">
       <h2>Following</h2>
       <% @user_facade.following.each do |followed| %>
       <ul class="followed_user">
@@ -40,15 +43,16 @@
         <% end %>
       </ul>
       <% end %>
+    </ul>
 
+      <ul class="friends">
       <% if @user_facade.friends != [] %>
         <h2>Friends</h2>
-        <ul class="friends">
         <% @user_facade.friends.each do |friend| %>
         <%= "#{friend.first_name} #{friend.last_name}"%>
         <% end %>
-        </ul>
       <% end %>
+    </ul>
   <% end %>
   </section>
 </section>
