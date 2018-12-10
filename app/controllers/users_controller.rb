@@ -23,9 +23,6 @@ class UsersController < ApplicationController
     redirect_to dashboard_path
   end
 
-  def destroy
-  end
-
   private
 
   def auth_hash
@@ -33,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :password, :token)
+    params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
 
 end
