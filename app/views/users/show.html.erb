@@ -25,7 +25,7 @@
       <% @user_facade.followers.each do |follower| %>
       <ul class="follower">
         <li class="name"> <%= link_to follower.name, follower.url %>
-          <% if follower.github_id != nil %>
+          <% if User.where(github_id: follower.github_id).count >= 1 %>
             <%= "Add Friend" %>
           <% end %>
         </li>
