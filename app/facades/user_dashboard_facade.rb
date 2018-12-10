@@ -30,6 +30,13 @@ class UserDashboardFacade
                 end
     end
 
+    def friends
+      @user.friendships.map do |friendship|
+        # binding.pry
+        User.find_by(github_id: friendship.friend_id)
+      end
+    end
+
   def github_service
     GithubService.new(token)
   end
