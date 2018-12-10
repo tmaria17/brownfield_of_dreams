@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   get '/auth/github', as: 'github_auth'
   get '/auth/:provider/callback', to: 'users#update'
 
-  post '/friendship',  to: 'friendships#create'
+  post '/friendship',  to: 'friendships#create', as: 'friendo'
   get '/friendship',  to: 'friendships#create'
 
 
