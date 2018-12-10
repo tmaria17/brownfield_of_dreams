@@ -21,18 +21,42 @@
     <li class="name"><%= link_to repo.name, repo.url %></li>
   </ul>
     <% end %>
+    <ul class="followers">
     <h2>Followers</h2>
       <% @user_facade.followers.each do |follower| %>
       <ul class="follower">
-        <li class="name"> <%= link_to follower.name, follower.url %></li>
+        <li class="name"> <%= link_to follower.name, follower.url %>
+          <% if current_user.friendships.where(friend_id: follower.github_id).count >=1  %>
+            <%= "Already a friend" %>
+          <% elsif User.where(github_id: follower.github_id).count >= 1%>
+            <%= link_to "Add Friend", friendship_path(friend_id: follower.github_id) %>
+          <% end %>
+        </li>
       </ul>
       <% end %>
+    </ul>
+      <ul class="following">
       <h2>Following</h2>
       <% @user_facade.following.each do |followed| %>
       <ul class="followed_user">
         <li class="name"> <%= link_to followed.name, followed.url %></li>
+        <% if current_user.friendships.where(friend_id: followed.github_id).count >=1 %>
+          <%= "Already a friend" %>
+        <% elsif User.where(github_id: followed.github_id).count >= 1%>
+          <%= link_to "Add Friend", friendship_path(friend_id: followed.github_id) %>
+        <% end %>
       </ul>
       <% end %>
+    </ul>
+
+      <ul class="friends">
+      <% if @user_facade.friends != [] %>
+        <h2>Friends</h2>
+        <% @user_facade.friends.each do |friend| %>
+        <%= "#{friend.first_name} #{friend.last_name}"%>
+        <% end %>
+      <% end %>
+    </ul>
   <% end %>
   </section>
 </section>
