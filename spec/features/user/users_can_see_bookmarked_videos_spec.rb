@@ -11,10 +11,20 @@ describe 'as a registered user' do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
+    visit tutorial_path(id: video_1.tutorial_id, video_id: video_1.id)
+    click_on "Bookmark"
+
+    visit tutorial_path(id: video_2.tutorial_id, video_id: video_2.id)
+    click_on "Bookmark"
+
     visit dashboard_path
 
-    expect(page).to have_content("Bookmarked")
-    expect(page)
+    within('.bookmarked') do
+      expect(page).to have_content("Bookmarked Segments")
+      expect(page).to have_content(video_1.title)
+      expect(page).to have_content(video_2.title)
+      expect(page).to_not have_content(video_3.title)
+    end
 
   end
 end
