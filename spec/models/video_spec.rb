@@ -10,4 +10,19 @@ RSpec.describe Video, type: :model do
     it {should have_many(:users).through(:user_videos)}
     it {should belong_to(:tutorial)}
   end
+
+  describe 'Class methods' do
+    it 'should assign a video position if position is nil' do
+      tutorial = create(:tutorial)
+      video1 = create(:video, tutorial_id: tutorial.id, position: 1)
+      video2 = create(:video, tutorial_id: tutorial.id)
+      video2.update_attribute(:position, nil)
+
+      Video.position_assignment
+
+      expect(video1.position).to eq(1)
+      binding.pry
+      expect(video2.position).to eq(2)
+    end
+  end
 end
