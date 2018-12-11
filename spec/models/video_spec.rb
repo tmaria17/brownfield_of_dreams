@@ -15,14 +15,16 @@ RSpec.describe Video, type: :model do
     it 'should assign a video position if position is nil' do
       tutorial = create(:tutorial)
       video1 = create(:video, tutorial_id: tutorial.id, position: 1)
-      video2 = create(:video, tutorial_id: tutorial.id)
-      video2.update_attribute(:position, nil)
+      video2 = create(:video, tutorial_id: tutorial.id, position: 2)
+      video3 = create(:video, tutorial_id: tutorial.id)
+
+      video3.update_attribute(:position, nil)
+      expect(Video.last.position).to eq(nil)
 
       Video.position_assignment
 
-      expect(Video.last.position).to eq(2)
-      expect(video1.position).to eq(1)
-      expect(video2.position).to eq(2)
+      expect(Video.last.position).to eq(3)
+      expect(video3.reload.position).to eq(3)
     end
   end
 end
