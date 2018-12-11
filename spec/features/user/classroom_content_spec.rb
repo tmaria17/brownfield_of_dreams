@@ -35,6 +35,7 @@ describe 'as a user' do
 
     visit tutorial_path(tutorial)
     expect(page).to_not have_content(tutorial.title)
+    expect(page).to have_content("Please log in to view this tutorial.")
 
     visit tutorial_path(tutorial_2)
     expect(page).to have_content(tutorial_2.title)
