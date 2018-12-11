@@ -6,13 +6,11 @@ class Video < ApplicationRecord
 
   def self.position_assignment
     Video.where(position: nil).map do |video|
-      video.update(position: (Tutorial.find(video.tutorial_id)).videos.maximum(:position)+1)
+      video.update_attribute(:position, Tutorial.find(video.tutorial_id).videos.maximum(:position)+1)
       # binding.pry
     # Video.where(position: nil).map do |video|
     #   video.update(position: (Tutorial.find(video.tutorial_id)).videos.maximum(:position)+1)
     # end
     end
-    # binding.pry
-
   end
 end
