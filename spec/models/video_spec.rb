@@ -20,8 +20,8 @@ RSpec.describe Video, type: :model do
 
       Video.position_assignment
 
+      expect(Video.last.position).to eq(2)
       expect(video1.position).to eq(1)
-      binding.pry
       expect(video2.position).to eq(2)
     end
   end
