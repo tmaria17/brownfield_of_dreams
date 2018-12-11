@@ -8,10 +8,12 @@
     <li> <%= current_user.email%> </li>
   </ul>
   <section>
+  <ul class="bookmarked">
     <h1>Bookmarked Segments</h1>
     <% @user_facade.bookmarked_videos.each do |video| %>
-      <li><%= video.title %></li>
+      <li><%= link_to video.title, tutorial_path(id: video.tutorial_id, video_id: video.id) %></li>
     <% end %>
+  </ul>
   </section>
   <% if current_user.token == nil %>
     <%= link_to "Connect to Github", :github_auth %>
