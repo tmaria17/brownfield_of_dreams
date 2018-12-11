@@ -9,4 +9,11 @@ class Video < ApplicationRecord
       video.update_attributes(position: Tutorial.find(video.tutorial_id).videos.maximum(:position)+1)
     end
   end
+  
+  def self.display_videos(user)
+    joins(:user_videos, :tutorial)
+    .order(:tutorial_id, :position)
+    .where('user_id = ?', user.id)
+    .limit(5)
+  end
 end

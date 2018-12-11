@@ -29,7 +29,6 @@ describe 'as a user' do
       click_on "Add Friend"
     end
 
-
     within('.friends') do
       expect(page).to have_content(user_2.first_name)
       expect(page).to have_content(user_2.last_name)

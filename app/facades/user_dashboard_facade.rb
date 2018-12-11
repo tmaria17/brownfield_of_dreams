@@ -4,6 +4,13 @@ class UserDashboardFacade
     @user = user
   end
 
+  def bookmarked_videos
+    video_array = Video.display_videos(@user)
+    video_array.group_by do |video|
+      Tutorial.find(video.tutorial_id).title
+    end
+  end
+
   def token
    @user.token
   end
