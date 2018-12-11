@@ -39,8 +39,19 @@ describe 'as a user' do
     within('.followers') do
       expect(page).to_not have_content("Add Friend")
     end
-    
+
     expect(page).to have_content("You have added #{user_2.first_name} #{user_2.last_name} as a friend.")
+  end
+
+  it 'does not add friends without valid id' do
+    user_1 = create(:user, token: ENV['github_token'], github_id: 12345678)
+    user_2 = create(:user, token: ENV['github_token_2'])
+    user_3 = create(:user)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+
+    visit friendship_path(36902512)
+    expect(page).to have_content("This friendship could not be created.")
   end
 
 
