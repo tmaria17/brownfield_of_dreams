@@ -4,9 +4,10 @@ class Video < ApplicationRecord
   belongs_to :tutorial
 
   def self.display_videos(user)
-    joins(:user_videos)
+    joins(:user_videos, :tutorial)
     .order(:tutorial_id, :position)
     .where('user_id = ?', user.id)
     .limit(5)
   end
+
 end
