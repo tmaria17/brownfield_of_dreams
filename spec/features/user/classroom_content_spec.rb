@@ -12,6 +12,11 @@ describe 'as a user' do
     visit tutorials_path
 
     expect(page).to have_content(tutorial.title)
+
+    visit tutorial_path(tutorial)
+
+    expect(page).to have_content(tutorial.title)
+
   end
 
   it 'does not display classroom content to users not logged in'do
