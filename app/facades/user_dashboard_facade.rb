@@ -4,6 +4,10 @@ class UserDashboardFacade
     @user = user
   end
 
+  def bookmarked_videos
+    Video.display_videos(@user)
+  end
+
   def token
    @user.token
   end
