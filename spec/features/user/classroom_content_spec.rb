@@ -20,11 +20,18 @@ describe 'as a user' do
     video1 = create(:video, tutorial_id: tutorial.id)
     video2 = create(:video, tutorial_id: tutorial.id)
     tutorial_2 = create(:tutorial, classroom: false)
+    video3 = create(:video, tutorial_id: tutorial_2.id)
+    video4 = create(:video, tutorial_id: tutorial_2.id)
 
     visit tutorials_path
-    
+
     expect(page).to_not have_content(tutorial.title)
     expect(page).to have_content(tutorial_2.title)
 
+    visit tutorial_path(tutorial)
+    expect(page).to_not have_content(tutorial.title)
+
+    visit tutorial_path(tutorial_2)
+    expect(page).to have_content(tutorial_2.title)
   end
 end
