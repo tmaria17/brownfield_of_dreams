@@ -10,7 +10,6 @@
   <section>
     <h1>Bookmarked Segments</h1>
     <% @user_facade.bookmarked_videos.each do |video| %>
-      <%= binding.pry %>
       <li><%= video.title %></li>
     <% end %>
   </section>
