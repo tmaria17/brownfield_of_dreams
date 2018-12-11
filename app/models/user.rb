@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_secure_password
 
   def find_or_create_from_auth_hash(user, auth)
-    token = "token #{auth["credentials"]["token"]}"
+    token = "#{auth["credentials"]["token"]}"
     user[:token] = token
     github_id = find_github_id(token)
     user[:github_id] = github_id
