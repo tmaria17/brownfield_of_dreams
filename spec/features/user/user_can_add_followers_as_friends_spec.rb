@@ -46,7 +46,6 @@ describe 'as a user' do
   it 'does not add friends without valid id' do
     user_1 = create(:user, token: ENV['github_token'], github_id: 12345678)
     user_2 = create(:user, token: ENV['github_token_2'], github_id: 37811063)
-    user_3 = create(:user)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
