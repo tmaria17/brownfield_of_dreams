@@ -1,21 +1,21 @@
 class GithubService
 
   def initialize(token)
-    @token = token
+    @token = "token #{token}"
   end
 
   def get_repos
-    get_json("/user/repos?per_page=5")
+    a = get_json("/user/repos?per_page=5")
   end
 
   def get_followers
     get_json("/user/followers")
   end
 
-  def get_github_id
-    json = get_json("/user")
-    json[:id]
-  end
+  # def get_github_id
+  #   json = get_json("/user")
+  #   json[:id]
+  # end
 
   def get_followed_users
     get_json("/user/following")
