@@ -12,13 +12,22 @@ class User < ApplicationRecord
   def find_or_create_from_auth_hash(user, auth)
     token = "#{auth["credentials"]["token"]}"
     user[:token] = token
-    # github_id = find_github_id(token)
     user[:github_id] = "#{auth["extra"]["raw_info"]["id"]}"
     user.save!
   end
 
-  # def find_github_id(token)
-  #   GithubService.new(token).get_github_id
-  # end
+
+
+  def validate_email
+    self.activated = true
+    self.activation_token = nil
+  end
+
+  def set_activation_token
+    if self.activation_token.blank?
+      self.activation_token = SecureRandom.urlsafe_base64.to_s
+    end
+  end
+
 
 end

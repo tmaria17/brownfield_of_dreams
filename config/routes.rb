@@ -49,4 +49,7 @@ Rails.application.routes.draw do
   end
 
   resources :user_videos, only:[:create, :destroy]
+
+  get '/:token/activation/', to: 'activations#confirm_email', as: 'activation'
+
 end
