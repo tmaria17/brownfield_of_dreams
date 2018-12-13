@@ -9,11 +9,11 @@ describe 'as a user' do
     click_on "Send an Invite"
 
     expect(current_path).to eq("/invite")
-    fill_in "Github Handle", with: "mstang15"
+    fill_in :github_handle, with: "jplao"
     click_on "Send Invite"
     expect(current_path).to eq("/dashboard")
     expect(page).to have_content("Successfully sent invite!")
-    # if the user has an email address associated with their github account
-    #"The Github user you selected doesn't have an email address associated with their account."
+  #   if the user has an email address associated with their github account
+  #   "The Github user you selected doesn't have an email address associated with their account."
   end
 end
