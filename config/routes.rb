@@ -51,5 +51,6 @@ Rails.application.routes.draw do
   resources :user_videos, only:[:create, :destroy]
 
   get '/:token/activation/', to: 'activations#confirm_email', as: 'activation'
+  get '/invite', to: 'invites#send_invite'
 
 end
