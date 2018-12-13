@@ -23,6 +23,7 @@
     <% end %>
   </ul>
   </section>
+<%= link_to "Send an Invite", invite_path %>
   <% if current_user.token == nil %>
     <%= link_to "Connect to Github", :github_auth %>
   <% end %>

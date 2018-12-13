@@ -5,17 +5,17 @@ class GithubService
   end
 
   def get_repos
-    a = get_json("/user/repos?per_page=5")
+    get_json("/user/repos?per_page=5")
   end
 
   def get_followers
     get_json("/user/followers")
   end
 
-  # def get_github_id
-  #   json = get_json("/user")
-  #   json[:id]
-  # end
+  def get_invitee_info(handle)
+    json = get_json("/users/#{handle}")
+     {email:json[:email], name:json[:name]}
+  end
 
   def get_followed_users
     get_json("/user/following")
@@ -34,5 +34,4 @@ class GithubService
   def get_json(url)
     JSON.parse(conn.get(url).body, symbolize_names: true)
   end
-
 end
