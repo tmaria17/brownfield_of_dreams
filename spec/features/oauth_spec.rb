@@ -4,10 +4,7 @@ require 'rails_helper'
     it 'connects to github' do
       def stub_omniauth
         OmniAuth.config.test_mode = true
-        OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
-        'credentials' =>
-        {'token' =>  ENV['github_token']}
-        })
+        OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({'credentials' =>{'token' =>  ENV['github_token']},'extra'=>{'raw_info'=> {'id'=> 123456}}})
       end
 
       stub_omniauth

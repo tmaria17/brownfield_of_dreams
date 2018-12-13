@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'as a user' do
   it 'users have add friend link next to other github users' do
-    user_1 = create(:user, token: ENV['github_token'])
+    user_1 = create(:user, token: ENV['github_token'], github_id: 123456)
     user_2 = create(:user, token: ENV['github_token_2'], github_id: 37811063)
     user_3 = create(:user)
 

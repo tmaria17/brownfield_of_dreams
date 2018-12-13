@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'A registered user' do
 
   it 'displays github followers' do
-    user = create(:user, token: ENV['github_token'])
+    user = create(:user, token: ENV['github_token'], github_id: 123456)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     VCR.use_cassette("github_followers") do
@@ -19,7 +19,7 @@ describe 'A registered user' do
   end
 
   it 'displays github followed users' do
-    user = create(:user, token: ENV['github_token'])
+    user = create(:user, token: ENV['github_token'], github_id: 123456)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     VCR.use_cassette("github_following") do

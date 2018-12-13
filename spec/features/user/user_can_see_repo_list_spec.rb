@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'A registered user' do
 
   it 'can display repo index if user has a token' do
-    user = create(:user, token: ENV['github_token'])
+    user = create(:user, token: ENV['github_token'], github_id: 123456)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     VCR.use_cassette("github_token") do
@@ -27,8 +27,8 @@ describe 'A registered user' do
   end
 
   it "displays the correct repos when there is more than one user" do
-    user_1 = create(:user, token: ENV['github_token'])
-    user_2 = create(:user, token: ENV['github_token_2'])
+    user_1 = create(:user, token: ENV['github_token'], github_id: 123456)
+    user_2 = create(:user, token: ENV['github_token_2'], github_id: 1233456)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
     VCR.use_cassette("github_token") do
