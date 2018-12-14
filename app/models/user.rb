@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
   def validate_email
     self.activated = true
-    self.activation_token = nil
+    # self.activation_token = nil
   end
 
   def set_activation_token
