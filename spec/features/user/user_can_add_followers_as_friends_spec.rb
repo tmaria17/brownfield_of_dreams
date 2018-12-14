@@ -19,7 +19,7 @@ describe 'as a user' do
   end
 
   it 'users can use add friend link to actually add friends' do
-    VCR.use_cassette("github_friends") do
+    VCR.use_cassette("add_friends") do
 
     user_1 = create(:user, token: ENV['github_token'], github_id: 12345678)
     user_2 = create(:user, token: ENV['github_token_2'], github_id: 37811063)
@@ -27,6 +27,7 @@ describe 'as a user' do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
       visit dashboard_path
+
       within('.followers') do
         click_on "Add Friend"
      end
@@ -42,7 +43,7 @@ describe 'as a user' do
      end
 
      expect(page).to have_content("You have added #{user_2.first_name} #{user_2.last_name} as a friend.")
-  end
+   end
 end
 
   it 'does not add friends without valid id' do
