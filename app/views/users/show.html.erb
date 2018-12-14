@@ -8,12 +8,12 @@
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <h3>Account Details</h3>
-  <ul>
-    <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
-    <li> <%= current_user.email%> </li>
-  </ul>
+    <ul>
+      <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
+      <li> <%= current_user.email%> </li>
+    </ul>
   <section>
-  <ul class="bookmarked">
+    <ul class="bookmarked">
     <h1>Bookmarked Segments</h1>
     <% @user_facade.bookmarked_videos.each do |tutorial, videos| %>
       <h3><%= tutorial %></h3>
@@ -21,7 +21,7 @@
         <li><%= link_to video.title, tutorial_path(id: video.tutorial_id, video_id: video.id) %></li>
       <% end %>
     <% end %>
-  </ul>
+    </ul>
   </section>
 <%= link_to "Send an Invite", invite_path %>
   <% if current_user.token == nil %>
