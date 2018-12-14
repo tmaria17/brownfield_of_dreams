@@ -29,4 +29,14 @@ describe 'as a guest user' do
     expect(page).to have_content("Logged in as #{@first_name} #{@last_name}")
     expect(page).to have_content("This account has not yet been activated. Please check your email.")
   end
+
+  it 'can activate user by calling validate' do
+    user = create(:user)
+
+
+    user.validate_email
+
+    expect(user.activated).to eq(true)
+  end
+
 end
