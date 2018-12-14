@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-# As a guest user
 describe 'as a guest user' do
 
   before(:each) do
