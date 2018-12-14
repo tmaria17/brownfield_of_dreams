@@ -65,3 +65,9 @@ $ bundle exec rspec
 ### Versions
 * Ruby 2.4.1
 * Rails 5.2.0
+
+## Contributors
+
+ [Meg Stang](https://github.com/mtstang15)
+
+[Maria Torres](https://github.com/tmaria17)
