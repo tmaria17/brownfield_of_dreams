@@ -8,7 +8,8 @@ describe "as a user " do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit tutorial_path(tutorial)
+
     expect(page).to have_content("This tutorial has no videos!")
-    expect(current_path).to eq("/")
+    expect(current_path).to eq(dashboard_path)
   end
 end
