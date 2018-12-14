@@ -68,6 +68,5 @@ $ bundle exec rspec
 
 ## Contributors
 
- [Meg Stang](https://github.com/mtstang15)
-
+ [Meg Stang](https://github.com/mstang15)
 [Maria Torres](https://github.com/tmaria17)
