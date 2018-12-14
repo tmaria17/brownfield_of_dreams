@@ -12,8 +12,10 @@ require 'rails_helper'
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-      visit '/dashboard'
-      click_link "Connect to Github"
+      VCR.use_cassette("oauth") do
+        visit '/dashboard'
+        click_link "Connect to Github"
+      end
 
       expect(user.token).to eq(ENV['github_token'])
       expect(page).to have_content("Following")

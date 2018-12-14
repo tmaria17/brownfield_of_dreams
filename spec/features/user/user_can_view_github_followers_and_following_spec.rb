@@ -8,6 +8,7 @@ describe 'A registered user' do
 
     VCR.use_cassette("github_followers") do
       visit '/dashboard'
+    end
 
       expect(page).to have_content("Github")
       expect(page).to have_content("Followers")
@@ -15,7 +16,6 @@ describe 'A registered user' do
       within(first(".follower")) do
         expect(page).to have_css(".name")
       end
-    end
   end
 
   it 'displays github followed users' do
@@ -25,13 +25,13 @@ describe 'A registered user' do
     VCR.use_cassette("github_following") do
 
       visit '/dashboard'
+    end
       expect(page).to have_content("Github")
       expect(page).to have_content("Following")
       expect(page).to have_css(".followed_user")
       within(first(".followed_user")) do
         expect(page).to have_css(".name")
       end
-    end
   end
 
 end

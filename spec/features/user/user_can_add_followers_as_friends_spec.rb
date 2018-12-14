@@ -27,6 +27,7 @@ describe 'as a user' do
       within('.followers') do
         click_on "Add Friend"
      end
+    end
 
      within('.friends') do
        expect(page).to have_content(user_2.first_name)
@@ -39,7 +40,6 @@ describe 'as a user' do
      end
 
      expect(page).to have_content("You have added #{user_2.first_name} #{user_2.last_name} as a friend.")
-   end
   end
 
   it 'does not add friends without valid id' do
