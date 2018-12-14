@@ -6,5 +6,4 @@ class Tutorial < ApplicationRecord
   def self.public_content
     Tutorial.where(classroom: false)
   end
-  
 end
