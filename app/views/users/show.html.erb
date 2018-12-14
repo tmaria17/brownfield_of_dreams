@@ -13,23 +13,27 @@
       <li> <%= current_user.email%> </li>
     </ul>
   <section>
-    <ul class="bookmarked">
-    <h1>Bookmarked Segments</h1>
+    <div class="bookmarked">
+  <h1>Bookmarked Segments</h1>
+  <% if @user_facade.bookmarked_videos != {} %>
     <% @user_facade.bookmarked_videos.each do |tutorial, videos| %>
       <h3><%= tutorial %></h3>
       <% videos.each do |video| %>
         <li><%= link_to video.title, tutorial_path(id: video.tutorial_id, video_id: video.id) %></li>
       <% end %>
     <% end %>
-    </ul>
+    <% else %>
+      <h3>You have not bookmarked any videos yet.</h3>
+    <% end  %>
+  </div>
   </section>
-<%= link_to "Send an Invite", invite_path %>
-  <% if current_user.token == nil %>
-    <%= link_to "Connect to Github", :github_auth %>
-  <% end %>
   <section>
+  <h1>Github</h1>
+<%= link_to "Send an Invite", invite_path, class: "mt2 btn btn-primary mb1 bg-teal"  %>
+  <% if current_user.token == nil %>
+    <%= link_to "Connect to Github", :github_auth, class: "mt2 btn btn-primary mb1 bg-teal"  %>
+  <% end %>
     <% if current_user.token != nil && current_user.github_id != nil %>
-    <h1>Github</h1>
     <% @user_facade.repos.each do |repo| %>
   <ul class="repo">
     <li class="name"><%= link_to repo.name, repo.url %></li>
