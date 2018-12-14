@@ -1,13 +1,12 @@
 class ActivationsController<ApplicationController
-  def confirm_email
+  def edit
     user = User.find_by(activation_token: params[:token])
     if user
       user.validate_email
       user.save(validate: false)
+      flash[:success] = "Thank you, your account is now activated."
       redirect_to dashboard_path
     end
   end
 
-  def index
-  end 
 end

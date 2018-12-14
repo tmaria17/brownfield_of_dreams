@@ -24,7 +24,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/activated', to: 'activations#index'
 
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
@@ -51,8 +50,8 @@ Rails.application.routes.draw do
   end
 
   resources :user_videos, only:[:create, :destroy]
-
-  get '/:token/activation/', to: 'activations#confirm_email', as: 'activation'
+  resources :activation, only: [:edit]
+  
   get '/invite', to: 'search#index'
 
 end
