@@ -50,8 +50,8 @@ Rails.application.routes.draw do
   end
 
   resources :user_videos, only:[:create, :destroy]
-  resources :activation, only: [:edit]
-  
+  resources :activations, only: [:edit]
+
   get '/invite', to: 'search#index'
 
 end
