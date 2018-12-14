@@ -2,10 +2,10 @@ require "rails_helper"
 
 describe 'as a user' do
   it 'emails invitations using github handles' do
-    user = create(:user, token: ENV['github_token'], github_id: 123456)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
     VCR.use_cassette("github_invites") do
+      user = create(:user, token: ENV['github_token'], github_id: 123456)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
       visit "/dashboard"
       click_on "Send an Invite"
 
@@ -20,10 +20,11 @@ describe 'as a user' do
   end
 
   it 'displays an error if the user does not have a public email' do
+    VCR.use_cassette("github_invites_two") do
+
     user = create(:user, token: ENV['github_token'], github_id: 123456)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    VCR.use_cassette("github_invites_two") do
       visit "/dashboard"
       click_on "Send an Invite"
 
