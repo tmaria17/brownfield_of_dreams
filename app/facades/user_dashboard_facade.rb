@@ -15,9 +15,9 @@ class UserDashboardFacade
    @user.token
   end
 
-  def user_name
-    @user.name
-  end
+  # def user_name
+  #   @user.name
+  # end
 
   def friends
     @user.friendships.map do |friend|

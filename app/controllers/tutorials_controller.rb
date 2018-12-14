@@ -14,10 +14,9 @@ class TutorialsController < ApplicationController
 
   def index
     if current_user == nil
-      @tutorials = TutorialFacade.new(Tutorial.all.where(classroom: false))
+      @tutorials = TutorialFacade.new(Tutorial.public_content)
     elsif current_user != nil
       @tutorials = TutorialFacade.new(Tutorial.all)
     end
   end
-
 end
